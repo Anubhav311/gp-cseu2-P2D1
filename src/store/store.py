@@ -1,4 +1,5 @@
 # Create a store class with a name and categories
+from category import Category
 
 class Store:
     #constructor
@@ -12,13 +13,13 @@ class Store:
         output += self.name + "\n"
         i = 1
         for c in self.categories:
-            output += "  " + str(i) + ". " + c + "\n"
+            output += "  " + str(i) + ". " + c.name + "\n"
             i += 1
 
         output += "  " + str(i) + ". Exit"
         return output
 
-s = Store("Bob's Store", ["Shoes", "Hats", "Hellicopters", "Belts"])
+s = Store("Bob's Store", [Category("Shoes"), Category("Hats"), Category("Hellicopters"), Category("Belts")])
 
 print(s)
 
@@ -31,7 +32,7 @@ while selection != len(s.categories) + 1:
         if selection == len(s.categories) + 1:
             print(f"Thanks for shopping at {s.name}")
         elif selection > 0 and selection <= len(s.categories):
-            print(s.categories[selection - 1])
+            print(s.categories[selection - 1].name)
         else:
             print("Select a valid number!")
     except ValueError:
